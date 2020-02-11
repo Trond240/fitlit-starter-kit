@@ -33,7 +33,15 @@ describe('Activity default properties', () => {
   })
 
   it('it should know the stair climbing record', () =>{
-    expect(activity.stairClimbRecord()).to.equal(37)
+    expect(activity.stairClimbRecord()).to.equal(36)
+  })
+
+  it('it should know average minutes active for the week', () => {
+    expect(activity.avgMinsActive()).to.equal(161)
+  })
+
+  it('it should be able to determine miles walked', () => {
+    expect(activity.milesWalked()).to.equal('2.91')
   })
 
 })
