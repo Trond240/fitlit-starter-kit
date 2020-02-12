@@ -63,16 +63,16 @@ class Activity {
     // filter the activity data?
     console.log(user)
     let data = this.activityData.filter(date => {
-    if(user.id === date.userID) {
-     return user.dailyStepGoal < date.numSteps;
+      if (user.id === date.userID) {
+        return user.dailyStepGoal < date.numSteps;
       }
-  });
+    });
     let result = data.map(day => {
       return day.date;
     })
 
     return result;
-}
+  }
  
   // For a user, find all the days where they 
   // exceeded their step goal
