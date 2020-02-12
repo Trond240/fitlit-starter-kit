@@ -40,7 +40,7 @@ describe('Activity default properties', () => {
     expect(activity.avgMinsActive('2019/06/15')).to.equal(132)
   })
 
-  it('it should filter the date', ()=> {
+  it('it should filter the date', () => {
     expect(activity.activityDate('2019/06/15')).to.deep.equal([
       {
         userID: 10,
@@ -132,5 +132,18 @@ describe('Activity default properties', () => {
   it('it should be able to determine miles walked', () => {
     expect(activity.milesWalked('2019/06/15', 1)).to.equal(3)
   })
+
+  it('it should show mins active for a date', () =>{
+    expect(activity.activeMins('2019/06/15', 1)).to.equal(140)
+  })
+
+  it('it should know if user reached step goal', () => {
+    expect(activity.stepGoal('2019/06/15', 1)).to.equal("You almost made it!")
+  })
+
+  it('should find all days where user exceeded step goal', () => {
+    expect(activity.daysStepGoal(userData[0])).to.deep.equal([ '2019/06/17' ])
+  })
+
 
 })
