@@ -5,11 +5,13 @@ let friendDisplay = document.querySelector('.friends-list');
 let userSleepDisplay = document.querySelector('.user-sleep-data')
 let allUsersSleepDisplay = document.querySelector('.all-user-sleep')
 let allUsersActivityDisplay = document.querySelector('.all-user-calculatiuons')
+let userActivityDisplay = document.querySelector('.step-calculations');
 let allActivity;
 let allSleep;
 let currentUser;
 let allUsers;
 let allHydration;
+let userActivity;
 
 window.onload = loadHandler;
 
@@ -27,6 +29,8 @@ function loadHandler() {
   displayAllUsersSleepInfo()
   loadAllAvctivityData()
   displayAllUserActivityInfo()
+  loadUserActivityData()
+  displayUserActivityInfo()
 }
 
 function loadUser() {
@@ -52,6 +56,10 @@ function loadAllSleepData() {
 
 function loadAllAvctivityData() {
   allUserActivityData = new ActivityRepo(activityData);
+}
+
+function loadUserActivityData() {
+  userActivity = new Activity(activityData, currentUser)
 }
 
 function displayUserInfo() {
@@ -118,7 +126,17 @@ function displayAllUserActivityInfo() {
   allUsersActivityDisplay.innerHTML = `
   <h3>- All Users Minutes Average: ${allUserActivityData.allUserStairsClimbedByDate("2019/06/15")}</h3>
   <h3>- All Users Average Steps Taken: ${allUserActivityData.averageStepsTakenByDate("2019/06/15")}</h3>
-  <h3>- All Users Average Stairs Climbed: ${allUserActivityData.averageMinutesActiveByDate("2019/06/15")}</h3>
+  <h3>- All Users Average Stairs Climbed: ${allUserActivityData.averageMinutesActiveByDate("2019/06/15")}</h3>  `
+}
+
+function displayUserActivityInfo() {
+  userActivityDisplay.innerHTML = `
+  <h3>- User Miles Walked: ${userActivity.milesWalked("2019/06/22", currentUser)}</h3>
+  <h3>- User Minutes Acitve: ${userActivity.activeMins("2019/06/22", currentUser)}</h3>
+  <h3>- User Step Goal Reached: ${userActivity.stepGoal("2019/06/22", currentUser)}</h3>
+  <h3>- Date Exceeded Step Goal: ${userActivity.daysStepGoal(currentUser)}</h3>
+  <h3>- Stair Climb Record: ${userActivity.stairClimbRecord()}</h3>
+  <h3>- AVerage Minutes Active: ${userActivity.avgMinsActive("2019/06/22")}</h3>
   `
 }
 

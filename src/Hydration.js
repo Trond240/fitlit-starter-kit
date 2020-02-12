@@ -18,11 +18,8 @@ class Hydration {
     let filteredUser = this.hydrationData.filter(user => user.userID === id);
     let todayIndex = filteredUser.findIndex(user => user.date === date);
     let weeklyOunces = filteredUser.slice(todayIndex - 6, todayIndex + 1).map(user => user.numOunces)
-    console.log(date, todayIndex)
     return weeklyOunces;
   }
-
-
 
   fluidConsumedALlTime(id){
      let allTime = this.hydrationData.reduce((acc, all) => {
@@ -34,11 +31,6 @@ class Hydration {
     return allTime;
   }
 
-  // addDays(date, daysToAdd) {
-  //   var newDate = new Date(date.valueOf());
-  //   newDate.setDate(newDate.getDate() + daysToAdd);
-  //   return newDate;
-  // }
 }
 
 if(typeof module !== 'undefined') {

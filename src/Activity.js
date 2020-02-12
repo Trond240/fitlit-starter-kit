@@ -1,9 +1,9 @@
 class Activity {
   constructor (activityData, userData) {
-    this.userData = userData;
     this.activityData = activityData;
+    this.userData = userData;
   }
-  
+
   stairClimbRecord () {
     let data = this.activityData.sort((a, b) => b.flightsOfStairs - a.flightsOfStairs);
     return data[0].flightsOfStairs
@@ -24,6 +24,7 @@ class Activity {
     }, {totalMinutesActive: 0, totalDays: 0});
     return Math.round(userActivity.totalMinutesActive / userActivity.totalDays);
   }
+
   activityDate (date) {
     let filterDate = this.activityData.filter(steps => {
       return steps.date === date;
@@ -31,50 +32,42 @@ class Activity {
     return filterDate
   }
 
-  milesWalked (date, id) {
+  milesWalked(date, id) {
     let activityDates = this.activityDate(date);
     let foundUser = activityDates.find(userDate => {
-      return userDate.userID === id
+      return userDate.userID === id.id
     })
-    return Math.round(this.userData[0].strideLength * foundUser.numSteps / 5280)
+    return Math.round(this.userData.strideLength * foundUser.numSteps / 5280)
   }
 
   activeMins (date, id) {
     let activityDates = this.activityDate(date);
     let foundUser = activityDates.find(userDate => {
-      return userDate.userID === id
+      return userDate.userID === id.id
     })
     return Math.round(foundUser.minutesActive)
   }
-  
+
   stepGoal (date, id) {
     let activityDates = this.activityDate(date);
     let foundUser = activityDates.find(userDate => {
-      return userDate.userID === id
+      return userDate.userID === id.id
     })
-    if (foundUser.numSteps >= this.userData[0].dailyStepGoal) {
+    if (foundUser.numSteps >= this.userData.dailyStepGoal) {
       return "Way to walk!"
     } else {
       return "You almost made it!"
     }
   }
 
-  daysStepGoal (user) {
-    // filter the activity data?
-    console.log(user)
-    let data = this.activityData.filter(date => {
-      if (user.id === date.userID) {
-        return user.dailyStepGoal < date.numSteps;
-      }
-    });
-    let result = data.map(day => {
-      return day.date;
-    })
-
-    return result;
+  daysStepGoal (userIn) {
+      let foundActivity = this.activityData.filter(user => userIn.id === user.userID);
+        if (foundActivity[0].numSteps > userIn.dailyStepGoal) {
+      return foundActivity[0].date
+    }
   }
- 
-  // For a user, find all the days where they 
+
+  // For a user, find all the days where they
   // exceeded their step goal
 
   addDays(date, daysToAdd) {
