@@ -13,7 +13,7 @@ describe('Activity default properties', () => {
 
   beforeEach(() => {
     user = new User(userData[0]);
-    activity = new Activity(activityData, user.id);
+    activity = new Activity(activityData, userData);
   })
 
   it('it should be a function', () => {
@@ -25,7 +25,7 @@ describe('Activity default properties', () => {
   })
 
   it('it should have a unique ID', () => {
-    expect(activity.userID).to.equal(1);
+    expect(activity.userData[0].id).to.equal(1);
   })
 
   it('it should have a date', () => {
@@ -33,15 +33,104 @@ describe('Activity default properties', () => {
   })
 
   it('it should know the stair climbing record', () =>{
-    expect(activity.stairClimbRecord()).to.equal(36)
+    expect(activity.stairClimbRecord()).to.equal(37)
   })
 
   it('it should know average minutes active for the week', () => {
-    expect(activity.avgMinsActive()).to.equal(161)
+    expect(activity.avgMinsActive('2019/06/15')).to.equal(132)
+  })
+
+  it('it should filter the date', ()=> {
+    expect(activity.activityDate('2019/06/15')).to.deep.equal([
+      {
+        userID: 10,
+        date: '2019/06/15',
+        numSteps: 8015,
+        minutesActive: 106,
+        flightsOfStairs: 37
+      },
+      {
+        userID: 3,
+        date: '2019/06/15',
+        numSteps: 7402,
+        minutesActive: 116,
+        flightsOfStairs: 33
+      },
+      {
+        userID: 9,
+        date: '2019/06/15',
+        numSteps: 6389,
+        minutesActive: 41,
+        flightsOfStairs: 33
+      },
+      {
+        userID: 4,
+        date: '2019/06/15',
+        numSteps: 3486,
+        minutesActive: 114,
+        flightsOfStairs: 32
+      },
+      {
+        userID: 8,
+        date: '2019/06/15',
+        numSteps: 10333,
+        minutesActive: 114,
+        flightsOfStairs: 31
+      },
+      {
+        userID: 11,
+        date: '2019/06/15',
+        numSteps: 11652,
+        minutesActive: 20,
+        flightsOfStairs: 24
+      },
+      {
+        userID: 6,
+        date: '2019/06/15',
+        numSteps: 14810,
+        minutesActive: 287,
+        flightsOfStairs: 18
+      },
+      {
+        userID: 1,
+        date: '2019/06/15',
+        numSteps: 3577,
+        minutesActive: 140,
+        flightsOfStairs: 16
+      },
+      {
+        userID: 5,
+        date: '2019/06/15',
+        numSteps: 11374,
+        minutesActive: 213,
+        flightsOfStairs: 13
+      },
+      {
+        userID: 2,
+        date: '2019/06/15',
+        numSteps: 4294,
+        minutesActive: 138,
+        flightsOfStairs: 10
+      },
+      {
+        userID: 7,
+        date: '2019/06/15',
+        numSteps: 2634,
+        minutesActive: 107,
+        flightsOfStairs: 5
+      },
+      {
+        userID: 12,
+        date: '2019/06/15',
+        numSteps: 9256,
+        minutesActive: 108,
+        flightsOfStairs: 2
+      }
+    ])
   })
 
   it('it should be able to determine miles walked', () => {
-    expect(activity.milesWalked()).to.equal('2.91')
+    expect(activity.milesWalked('2019/06/15', 1)).to.equal(3)
   })
 
 })
