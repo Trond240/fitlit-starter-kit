@@ -1,4 +1,4 @@
-# FitLit Starter Kit
+# FitLit!
 
 ## Abstract
 This project is an activity tracker showing information for a user regarding their steps, sleep, hydration and friends. The information will be unique for each user. The project uses HTML, CSS and Javascript. The project is hosted through GitHub Pages.
