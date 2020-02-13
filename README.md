@@ -21,9 +21,16 @@ This project is an activity tracker showing information for a user regarding the
 
 ## Screenshots
 
-![Screenshot of Header](https://user-images.githubusercontent.com/54754467/74386858-47aa0c00-4db4-11ea-9fcd-e11decccd85b.png)
-![Screenshot of Info](https://user-images.githubusercontent.com/54754467/74387526-031f7000-4db6-11ea-9828-dca949d548f5.png)
+![7128FF35-1CED-4E60-8BEF-828D7561B0F9](https://user-images.githubusercontent.com/49410633/74396765-e4979400-4e0a-11ea-9d62-e1b3fdd410fd.jpeg)
+![DDA96189-CF9F-4AAA-A88A-AAEEAE034769](https://user-images.githubusercontent.com/49410633/74396768-e6f9ee00-4e0a-11ea-8efc-366e1e1699dd.jpeg)
 
-### Contributers
-Trond Makonese
-Kimala Cochran
+
+### Authors
+
+- Trond Makonese
+- Kimala Cochran
+
+## Future Updates
+
+- Add Charts displaying information over a week.
+- Finish css styling
