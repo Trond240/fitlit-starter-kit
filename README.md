@@ -25,4 +25,5 @@ This project is an activity tracker showing information for a user regarding the
 ![Screenshot of Info](https://user-images.githubusercontent.com/54754467/74387526-031f7000-4db6-11ea-9828-dca949d548f5.png)
 
 ### Contributers
-Trond and Kimala
+Trond Makonese
+Kimala Cochran
